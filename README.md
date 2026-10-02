@@ -1,27 +1,52 @@
-# JuicyData
+# JuicyCloud
 
-A FedRAMP desktop mascot for Mac OS 12+ inspired by the fun at FedRAMP Day 2026
+A Clippy-style cloud mascot that serves up FedRAMP 20x humor. Available as a floating desktop buddy for macOS and as an iPhone app with Home Screen and Lock Screen widgets.
 
-A Clippy-style desktop mascot for macOS. Floats above your windows, bobs around, wiggles when clicked, and drops FedRAMP wisdom in a speech bubble.
+> **Unofficial fan project.** JuicyCloud is not affiliated with, endorsed by, or sponsored by GSA, FedRAMP, or any government agency. Quotes are attributed to their speakers as publicly reported.
 
-## Build for yourself
+## What's here
 
-    bash build.sh
-    open build/JuicyCloud.app
+| Folder | Contents |
+|---|---|
+| `mac/` | macOS app (Swift, AppKit). Builds a universal `.app` and a signed, notarized `.dmg` installer. |
+| `ios/` | iPhone app and widget (SwiftUI, WidgetKit). Xcode project is generated with XcodeGen. |
+| `docs/` | End-user install and setup guide for the Mac app. |
 
-## Make an installer to share
+## Features
 
-    bash make_dmg.sh
+- Floats above your windows (Mac), bobs, wiggles when clicked, and talks in a speech bubble
+- About 45 lines on 20x, the Rev5 transition, CR26, KSIs, and life in compliance
+- Optional voice that automatically uses the best male English voice installed
+- Mac: reacts when you switch into Excel, Word, Teams, and more; customizable lines file
+- iPhone: tap-to-talk app, share button, and widgets that show a new line every hour
 
-This creates `build/JuicyCloud-1.0.dmg`: open it and drag JuicyCloud into Applications. Works on Apple Silicon and Intel Macs running macOS 12 or later.
+## Build the Mac app
 
-For a signed and notarized installer that opens without warnings, see the signing steps in the chat or set `SIGN_ID` and `NOTARY_PROFILE` as shown at the top of `make_dmg.sh`.
+Requires the Xcode Command Line Tools (`xcode-select --install`).
 
-## Using it
+```
+cd mac
+bash build.sh                 # build and run locally: open build/JuicyCloud.app
+bash make_dmg.sh              # unsigned .dmg installer
+```
 
-- Click the cloud: it shakes and says something.
-- Drag it anywhere. Position is remembered.
-- Right-click it, or use the ☁️ menu bar icon, for Show/Hide, Size, Chattiness, React to Apps, Edit Lines, and Quit.
-- Speech: Off, Only When Clicked, or All Lines. JuicyCloud automatically uses the best male English voice installed. For the best sound, download Evan (Premium) in System Settings > Accessibility > Spoken Content > System Voice > Manage Voices, then relaunch JuicyCloud.
-- Pronunciation of jargon (POA&M, 3PAO, 20x, and so on) is set in the `pronunciations` list near the top of `main.swift`.
-- Edit Lines… opens `~/.juicycloud/lines.txt`. One line per row, then choose Reload Lines.
+For a signed and notarized installer, see the comments at the top of `mac/make_dmg.sh`.
+
+## Build the iPhone app
+
+Requires Xcode and XcodeGen (`brew install xcodegen`).
+
+```
+cd ios
+bash setup.sh YOUR_TEAM_ID    # generates and opens the Xcode project
+```
+
+## Customize
+
+- Lines: `mac/main.swift` (`defaultLines`) and `ios/Shared/Lines.swift`
+- Pronunciation of jargon for the voice: the `pronunciations` list in the same files
+- Art: replace `mac/mascot.png` and `ios/Shared/Assets.xcassets/Mascot.imageset/mascot.png` with a transparent PNG
+
+## License
+
+Code is released under the [MIT License](LICENSE).
