@@ -4,7 +4,7 @@
 
 JuicyCloud installs in about a minute on any Mac running macOS 12 Monterey or later, on Apple Silicon or Intel. It is a desktop mascot that floats above your windows and serves up FedRAMP 20x humor in a speech bubble.
 
-- **Download:** the JuicyCloud installer file, named like `JuicyCloud-1.1.dmg`
+- **Download:** the JuicyCloud installer from the [latest release](https://github.com/gillooleyj/JuicyData/releases/latest). Under **Assets**, click the file named like `JuicyCloud-1.2.dmg`.
 - **Permissions:** a normal user account is fine; no admin password is needed
 - **Device:** use a personal Mac. Government-furnished Macs may block apps not approved by your agency, so follow your agency's software policy.
 
@@ -12,7 +12,7 @@ JuicyCloud is an unofficial fan app. It is not affiliated with, endorsed by, or 
 
 ## Install
 
-1. Download the `JuicyCloud-1.x.dmg` file you were sent. It lands in your **Downloads** folder.
+1. Download the `JuicyCloud-1.x.dmg` file from the [latest release](https://github.com/gillooleyj/JuicyData/releases/latest) (or the copy you were sent). It lands in your **Downloads** folder.
 2. Double-click the `.dmg` file. A window opens showing the JuicyCloud icon and an **Applications** folder.
 3. Drag the **JuicyCloud** icon onto the **Applications** folder.
 4. Close that window, then eject the installer: in Finder's sidebar, click the eject button next to **JuicyCloud**. You can delete the `.dmg` file afterward.
@@ -85,7 +85,7 @@ To go back to the built-in lines, delete the file. In Finder, choose **Go > Go t
 **To update to a new version:**
 
 1. Quit JuicyCloud from the settings menu.
-2. Open the new `.dmg` and drag JuicyCloud onto **Applications** again.
+2. Download the newest `.dmg` from the [latest release](https://github.com/gillooleyj/JuicyData/releases/latest), open it, and drag JuicyCloud onto **Applications** again.
 3. When asked, click **Replace**. Your settings and custom lines are kept.
 
 **To uninstall:**
@@ -110,4 +110,4 @@ defaults delete com.cooeytools.juicycloud
 | macOS says it can't verify the app | Open **System Settings > Privacy & Security** and click **Open Anyway** next to JuicyCloud. |
 | It won't install on my work Mac | Your agency's device management may block it. Use a personal Mac. |
 
-Still stuck? Contact the person who sent you the installer.
+Still stuck? Contact the person who sent you the installer, or [open an issue](https://github.com/gillooleyj/JuicyData/issues) on GitHub.

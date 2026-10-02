@@ -4,6 +4,12 @@ A Clippy-style cloud mascot that serves up FedRAMP 20x humor. Available as a flo
 
 > **Unofficial fan project.** JuicyCloud is not affiliated with, endorsed by, or sponsored by GSA, FedRAMP, or any government agency. Quotes are attributed to their speakers as publicly reported.
 
+## Download
+
+**Mac:** [Download the latest JuicyCloud installer](https://github.com/gillooleyj/JuicyData/releases/latest). Under **Assets**, click the `JuicyCloud-x.y.dmg` file, open it, and drag JuicyCloud into Applications. It's signed and notarized by Apple, and runs on Apple Silicon and Intel Macs with macOS 12 or later. See the [Mac install and setup guide](docs/MAC-INSTALL.md) for details.
+
+**iPhone:** not in the App Store yet. Build it from source with Xcode (see [Build the iPhone app](#build-the-iphone-app)).
+
 ## What's here
 
 | Folder | Contents |
