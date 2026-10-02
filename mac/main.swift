@@ -4,13 +4,12 @@
 import Cocoa
 import QuartzCore
 import AVFoundation
+import CryptoKit
 
 // MARK: - Config
 
 let appName = "JuicyCloud"
 let mascotPad: CGFloat = 8
-let supportDir = (NSHomeDirectory() as NSString).appendingPathComponent(".juicycloud")
-let linesPath = (supportDir as NSString).appendingPathComponent("lines.txt")
 
 let greeting = "Hello! I'm the government, and I'm here to help!"
 
@@ -53,12 +52,31 @@ let defaultLines: [String] = [
     "Patch in days, not quarters. I'm begging you.",
     "Persistent validation: like a gym membership you actually use.",
     "The JAB isn't coming back. Stop leaving the porch light on.",
-    "\"What if we did 50 FedRAMP authorizations a week?\" (Pete Waterman) What if we did 51?",
-    "\"Did I mention that? Spoilers! Shh.\" (Pete Waterman) I can keep a secret too.",
-    "\"If you're thinking about FedRAMP as compliance, you're done.\" (Pete Waterman)",
-    "\"FedRAMP is rooted in the past.\" (Pete Waterman, 2025) Not anymore.",
-    "\"I don't want my information out on the internet for three days.\" (Pete Waterman)",
-    "Pete, on vendors who can't patch a known exploitable vuln in days: \"I don't want you in the federal marketplace.\"",
+    "If you're thinking about FedRAMP as compliance, you're done.",
+    "FedRAMP is dead. Long live FedRAMP 20X.",
+    "My heart belongs to agencies.",
+    "The future of 20X is all happiness and rainbows.",
+    "20X is like Christmas for engineers.",
+    "Bugger the rest of you, these are critical security workflows.",
+    "Do it now, make it better, sooner.",
+    "KSIs are about outcomes, we like that. They are better than controls.",
+    "Partly cloudy. Fully compliant.",
+    "Today's forecast: a hundred percent chance of continuous monitoring.",
+    "Some clouds have silver linings. Mine are FIPS validated.",
+    "I'm a cloud. Of course I have high availability.",
+    "Let's take this offline. Oh wait, I'm a cloud.",
+    "Screenshots as evidence? In this economy?",
+    "Every time someone emails a PDF, a KSI loses its wings.",
+    "Trust, but verify. Continuously. Via API.",
+    "Evidence should be fresh, not artisanal and hand-collected.",
+    "I don't need a status meeting. I have an API.",
+    "My first ATO package is now old enough to vote.",
+    "I've got 99 problems, and every one has a POA&M with a due date.",
+    "Spreadsheets are where controls go to retire.",
+    "Your asset inventory is out of date. I can tell. Clouds know.",
+    "Zero trust. Infinite charm.",
+    "My threat model includes Reply All.",
+
 ]
 
 // Quips for when you switch into a particular app (bundle ID -> lines).
@@ -110,23 +128,26 @@ let pronunciations: [(String, String)] = [
     ("3PAO", "three P A O"),
     ("CR26", "C R 26"),
     ("20x", "twenty X"),
+    ("20X", "twenty X"),
+    ("0x", "zero X"),
     ("Rev5", "Rev 5"),
     ("KSIs", "K S I's"),
+    ("KSI", "K S I"),
     ("SSP", "S S P"),
     ("CUI", "C U I"),
     ("SBOM", "S-bomb"),
     ("800-53", "eight hundred fifty-three"),
     ("FIPS 140", "fips one forty"),
+    ("FIPS", "fips"),
+    ("ATO", "A T O"),
+    ("JAB", "jab"),
+    ("OSCAL", "oss-cal"),
     ("ConMon", "con-mon"),
 ]
 
 /// Turns a bubble line into something that sounds natural out loud.
 func spokenText(_ text: String) -> String {
     var s = text
-    if let re = try? NSRegularExpression(pattern: "\\(Pete Waterman(, \\d{4})?\\)") {
-        s = re.stringByReplacingMatches(in: s, range: NSRange(s.startIndex..., in: s),
-                                        withTemplate: "says Pete Waterman.")
-    }
     s = s.replacingOccurrences(of: "\"", with: "")
     for (word, sound) in pronunciations {
         s = s.replacingOccurrences(of: word, with: sound)
@@ -136,20 +157,55 @@ func spokenText(_ text: String) -> String {
 
 // MARK: - Voice
 
-final class Speaker: NSObject, AVSpeechSynthesizerDelegate {
+/// Pre-rendered ElevenLabs clips for the built-in lines (see voice/generate.py),
+/// looked up by a hash of the exact bubble text.
+enum Clips {
+    static func key(_ text: String) -> String {
+        SHA256.hash(data: Data(text.utf8)).prefix(8).map { String(format: "%02x", $0) }.joined()
+    }
+
+    static func url(for text: String) -> URL? {
+        Bundle.main.url(forResource: key(text), withExtension: "mp3", subdirectory: "clips")
+    }
+
+    /// The voice the clips were made with, e.g. "Eric".
+    static let voiceName: String? = {
+        guard let url = Bundle.main.url(forResource: "manifest", withExtension: "json", subdirectory: "clips"),
+              let data = try? Data(contentsOf: url),
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return nil }
+        return json["voice_name"] as? String
+    }()
+}
+
+final class Speaker: NSObject, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
     var onStart: (() -> Void)?
     var onFinish: (() -> Void)?
     private let synth = AVSpeechSynthesizer()
     private var current: AVSpeechUtterance?
+    private var player: AVAudioPlayer?
+    private let debug = ProcessInfo.processInfo.environment["JUICY_DEBUG"] != nil
+    private func log(_ msg: String) { if debug { FileHandle.standardError.write(Data((msg + "\n").utf8)) } }
 
     override init() {
         super.init()
         synth.delegate = self
     }
 
+    /// Speaks a bubble line: its bundled clip if there is one, otherwise the system voice.
     func speak(_ text: String) {
-        synth.stopSpeaking(at: .immediate)
-        let u = AVSpeechUtterance(string: text)
+        stop()
+        if let url = Clips.url(for: text), let p = try? AVAudioPlayer(contentsOf: url) {
+            p.delegate = self
+            player = p
+            if p.play() {
+                log("clip \(Clips.key(text)): \(text)")
+                onStart?()
+                return
+            }
+            player = nil
+        }
+        log("system voice: \(text)")
+        let u = AVSpeechUtterance(string: spokenText(text))
         u.voice = VoicePicker.best() ?? AVSpeechSynthesisVoice(language: "en-US")
         u.rate = AVSpeechUtteranceDefaultSpeechRate
         u.pitchMultiplier = 1.0
@@ -160,6 +216,17 @@ final class Speaker: NSObject, AVSpeechSynthesizerDelegate {
     func stop() {
         current = nil   // ignore callbacks from what we just cut off
         synth.stopSpeaking(at: .immediate)
+        player?.delegate = nil
+        player?.stop()
+        player = nil
+    }
+
+    func audioPlayerDidFinishPlaying(_ p: AVAudioPlayer, successfully flag: Bool) {
+        DispatchQueue.main.async {
+            guard p === self.player else { return }
+            self.player = nil
+            self.onFinish?()
+        }
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
@@ -211,16 +278,6 @@ enum VoicePicker {
         default: return "\(baseName(v)) (Basic)"
         }
     }
-}
-
-func loadLines() -> [String] {
-    if let text = try? String(contentsOfFile: linesPath, encoding: .utf8) {
-        let lines = text.components(separatedBy: .newlines)
-            .map { $0.trimmingCharacters(in: .whitespaces) }
-            .filter { !$0.isEmpty && !$0.hasPrefix("#") }
-        if !lines.isEmpty { return lines }
-    }
-    return defaultLines
 }
 
 // MARK: - Mascot view
@@ -436,7 +493,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     // MARK: Launch
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        lines = loadLines()
+        lines = defaultLines
         guard let url = Bundle.main.url(forResource: "mascot", withExtension: "png"),
               let img = NSImage(contentsOf: url) else {
             let alert = NSAlert()
@@ -560,7 +617,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         let readSecs = max(4.0, Double(text.count) / 14.0)
         let speakIt = voiceMode == 2 || (voiceMode == 1 && fromClick)
         if speakIt {
-            speaker.speak(spokenText(text))
+            speaker.speak(text)
             scheduleHide(after: readSecs * 3 + 5)   // safety net; normally hides when speech ends
         } else {
             speaker.stop()
@@ -695,17 +752,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             item("All Lines", #selector(setVoiceMode(_:)), tag: 2, on: voiceMode == 2),
             .separator(),
         ]
-        let best = VoicePicker.best()
-        let current = NSMenuItem(title: "Voice: \(VoicePicker.describe(best))", action: nil, keyEquivalent: "")
-        current.isEnabled = false
-        voiceItems.append(current)
-        if (best?.quality.rawValue ?? 0) < 3 {
-            voiceItems.append(item("Get a Better Voice…", #selector(betterVoiceHelp)))
+        if let clipVoice = Clips.voiceName {
+            let current = NSMenuItem(title: "Voice: \(clipVoice) (ElevenLabs)", action: nil, keyEquivalent: "")
+            current.isEnabled = false
+            voiceItems.append(current)
+        } else {
+            // Built without voice/clips: fall back to the best system voice.
+            let best = VoicePicker.best()
+            let current = NSMenuItem(title: "Voice: \(VoicePicker.describe(best))", action: nil, keyEquivalent: "")
+            current.isEnabled = false
+            voiceItems.append(current)
+            if (best?.quality.rawValue ?? 0) < 3 {
+                voiceItems.append(item("Get a Better Voice…", #selector(betterVoiceHelp)))
+            }
         }
         menu.addItem(sub("Speech", voiceItems))
-        menu.addItem(.separator())
-        menu.addItem(item("Edit Lines…", #selector(editLines)))
-        menu.addItem(item("Reload Lines", #selector(reloadLines)))
         menu.addItem(.separator())
         menu.addItem(item("Quit \(appName)", #selector(quit), key: "q"))
     }
@@ -766,24 +827,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         alert.addButton(withTitle: "OK")
         NSApp.activate(ignoringOtherApps: true)
         alert.runModal()
-    }
-
-    @objc func editLines() {
-        let fm = FileManager.default
-        try? fm.createDirectory(atPath: supportDir, withIntermediateDirectories: true)
-        if !fm.fileExists(atPath: linesPath) {
-            let header = "# One line per row. Lines starting with # are ignored.\n# Save this file, then choose Reload Lines from the cloud menu.\n\n"
-            try? (header + defaultLines.joined(separator: "\n") + "\n")
-                .write(toFile: linesPath, atomically: true, encoding: .utf8)
-        }
-        NSWorkspace.shared.open(URL(fileURLWithPath: linesPath))
-    }
-
-    @objc func reloadLines() {
-        lines = loadLines()
-        deck = []
-        mascot.hop()
-        say("Fresh material loaded. \(lines.count) lines ready.")
     }
 
     @objc func quit() { NSApp.terminate(nil) }

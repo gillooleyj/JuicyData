@@ -65,7 +65,7 @@ struct ContentView: View {
             greeted = true
             if voiceOn {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                    speaker.speak(spokenText(Lines.greeting))
+                    speaker.speak(Lines.greeting)
                 }
             }
         }
@@ -109,7 +109,7 @@ struct ContentView: View {
             line = next
         }
         if voiceOn {
-            speaker.speak(spokenText(next))
+            speaker.speak(next)
         }
     }
 

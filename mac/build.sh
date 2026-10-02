@@ -32,6 +32,13 @@ rm -f "build/$APP_NAME-arm64" "build/$APP_NAME-x86_64"
 
 cp mascot.png "$APP/Contents/Resources/"
 
+# ElevenLabs clips for the built-in lines (made by ../voice/generate.py).
+if ls ../voice/clips/*.mp3 >/dev/null 2>&1; then
+  mkdir -p "$APP/Contents/Resources/clips"
+  cp ../voice/clips/*.mp3 ../voice/clips/manifest.json "$APP/Contents/Resources/clips/"
+  python3 ../voice/generate.py --check || echo "Warning: lines without a clip will use the system voice."
+fi
+
 echo "Making icon..."
 ICONSET="build/AppIcon.iconset"
 mkdir -p "$ICONSET"

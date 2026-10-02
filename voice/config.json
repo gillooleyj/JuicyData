@@ -1,0 +1,32 @@
+{
+  "voice_name": "Eric",
+  "voice_id": "cjVigY5qzO86Huf0OWal",
+  "model_id": "eleven_v4",
+  "output_format": "mp3_44100_64",
+  "voice_settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75
+  },
+  "pronunciations": [
+    ["POA&Ms", "poe-ams"],
+    ["POA&M", "poe-am"],
+    ["3PAO", "three P A O"],
+    ["CR26", "C R 26"],
+    ["20x", "twenty X"],
+    ["20X", "twenty X"],
+    ["0x", "zero X"],
+    ["Rev5", "Rev 5"],
+    ["KSIs", "K S I's"],
+    ["KSI", "K S I"],
+    ["SSP", "S S P"],
+    ["CUI", "C U I"],
+    ["SBOM", "S-bomb"],
+    ["800-53", "eight hundred fifty-three"],
+    ["FIPS 140", "fips one forty"],
+    ["FIPS", "fips"],
+    ["ATO", "A T O"],
+    ["JAB", "jab"],
+    ["OSCAL", "oss-cal"],
+    ["ConMon", "con-mon"]
+  ]
+}

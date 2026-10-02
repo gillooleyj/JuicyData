@@ -43,12 +43,31 @@ enum Lines {
         "Patch in days, not quarters. I'm begging you.",
         "Persistent validation: like a gym membership you actually use.",
         "The JAB isn't coming back. Stop leaving the porch light on.",
-        "\"What if we did 50 FedRAMP authorizations a week?\" (Pete Waterman) What if we did 51?",
-        "\"Did I mention that? Spoilers! Shh.\" (Pete Waterman) I can keep a secret too.",
-        "\"If you're thinking about FedRAMP as compliance, you're done.\" (Pete Waterman)",
-        "\"FedRAMP is rooted in the past.\" (Pete Waterman, 2025) Not anymore.",
-        "\"I don't want my information out on the internet for three days.\" (Pete Waterman)",
-        "Pete, on vendors who can't patch a known exploitable vuln in days: \"I don't want you in the federal marketplace.\"",
+        "If you're thinking about FedRAMP as compliance, you're done.",
+        "FedRAMP is dead. Long live FedRAMP 20X.",
+        "My heart belongs to agencies.",
+        "The future of 20X is all happiness and rainbows.",
+        "20X is like Christmas for engineers.",
+        "Bugger the rest of you, these are critical security workflows.",
+        "Do it now, make it better, sooner.",
+        "KSIs are about outcomes, we like that. They are better than controls.",
+        "Partly cloudy. Fully compliant.",
+        "Today's forecast: a hundred percent chance of continuous monitoring.",
+        "Some clouds have silver linings. Mine are FIPS validated.",
+        "I'm a cloud. Of course I have high availability.",
+        "Let's take this offline. Oh wait, I'm a cloud.",
+        "Screenshots as evidence? In this economy?",
+        "Every time someone emails a PDF, a KSI loses its wings.",
+        "Trust, but verify. Continuously. Via API.",
+        "Evidence should be fresh, not artisanal and hand-collected.",
+        "I don't need a status meeting. I have an API.",
+        "My first ATO package is now old enough to vote.",
+        "I've got 99 problems, and every one has a POA&M with a due date.",
+        "Spreadsheets are where controls go to retire.",
+        "Your asset inventory is out of date. I can tell. Clouds know.",
+        "Zero trust. Infinite charm.",
+        "My threat model includes Reply All.",
+
     ]
 }
 
@@ -59,23 +78,26 @@ let pronunciations: [(String, String)] = [
     ("3PAO", "three P A O"),
     ("CR26", "C R 26"),
     ("20x", "twenty X"),
+    ("20X", "twenty X"),
+    ("0x", "zero X"),
     ("Rev5", "Rev 5"),
     ("KSIs", "K S I's"),
+    ("KSI", "K S I"),
     ("SSP", "S S P"),
     ("CUI", "C U I"),
     ("SBOM", "S-bomb"),
     ("800-53", "eight hundred fifty-three"),
     ("FIPS 140", "fips one forty"),
+    ("FIPS", "fips"),
+    ("ATO", "A T O"),
+    ("JAB", "jab"),
+    ("OSCAL", "oss-cal"),
     ("ConMon", "con-mon"),
 ]
 
 /// Turns a bubble line into something that sounds natural out loud.
 func spokenText(_ text: String) -> String {
     var s = text
-    if let re = try? NSRegularExpression(pattern: "\\(Pete Waterman(, \\d{4})?\\)") {
-        s = re.stringByReplacingMatches(in: s, range: NSRange(s.startIndex..., in: s),
-                                        withTemplate: "says Pete Waterman.")
-    }
     s = s.replacingOccurrences(of: "\"", with: "")
     for (word, sound) in pronunciations {
         s = s.replacingOccurrences(of: word, with: sound)

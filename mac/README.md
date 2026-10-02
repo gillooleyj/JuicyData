@@ -19,7 +19,6 @@ For a signed and notarized installer that opens without warnings, see the signin
 
 - Click the cloud: it shakes and says something.
 - Drag it anywhere. Position is remembered.
-- Right-click it, or use the ☁️ menu bar icon, for Show/Hide, Size, Chattiness, React to Apps, Edit Lines, and Quit.
-- Speech: Off, Only When Clicked, or All Lines. JuicyCloud automatically uses the best male English voice installed. For the best sound, download Evan (Premium) in System Settings > Accessibility > Spoken Content > System Voice > Manage Voices, then relaunch JuicyCloud.
-- Pronunciation of jargon (POA&M, 3PAO, 20x, and so on) is set in the `pronunciations` list near the top of `main.swift`.
-- Edit Lines… opens `~/.juicycloud/lines.txt`. One line per row, then choose Reload Lines.
+- Right-click it, or use the ☁️ menu bar icon, for Show/Hide, Size, Chattiness, React to Apps, Speech, and Quit.
+- Speech: Off, Only When Clicked, or All Lines. Lines play pre-recorded ElevenLabs clips from `../voice/clips` (bundled by `build.sh`). If a clip is missing, the best male English voice installed is used instead.
+- Pronunciation of jargon (POA&M, 3PAO, 20x, and so on): `../voice/config.json` for the recorded clips, and the `pronunciations` list near the top of `main.swift` for the system voice.

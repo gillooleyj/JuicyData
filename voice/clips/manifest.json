@@ -1,0 +1,299 @@
+{
+  "clips": {
+    "a42a2d41980c5907": {
+      "text": "Hello! I'm the government, and I'm here to help!",
+      "spoken": "Hello! I'm the government, and I'm here to help!"
+    },
+    "354a9ab71dce7304": {
+      "text": "It looks like you're writing an SSP. Would you like help turning it into JSON?",
+      "spoken": "It looks like you're writing an S S P. Would you like help turning it into JSON?"
+    },
+    "d7cd32b2ff7fa1fc": {
+      "text": "Have you tried turning your POA&M off and on again?",
+      "spoken": "Have you tried turning your poe-am off and on again?"
+    },
+    "0bf730abf716e889": {
+      "text": "Continuous monitoring means continuously. Not annually with extra steps.",
+      "spoken": "Continuous monitoring means continuously. Not annually with extra steps."
+    },
+    "87160ef1663819ce": {
+      "text": "If it's not in the boundary, it's not my problem.",
+      "spoken": "If it's not in the boundary, it's not my problem."
+    },
+    "5118cc513c9f5be7": {
+      "text": "20x faster. 0x spreadsheets. Probably.",
+      "spoken": "twenty X faster. zero X spreadsheets. Probably."
+    },
+    "1019e111b00a2381": {
+      "text": "Machine-readable or it didn't happen.",
+      "spoken": "Machine-readable or it didn't happen."
+    },
+    "ee419e0ff4b51d6b": {
+      "text": "My authorization boundary is drawn exactly where I want it.",
+      "spoken": "My authorization boundary is drawn exactly where I want it."
+    },
+    "5efec5ec057474cc": {
+      "text": "Did someone say 3PAO? I'm ready for my close-up.",
+      "spoken": "Did someone say three P A O? I'm ready for my close-up."
+    },
+    "22f6871ed2fe1289": {
+      "text": "Class A, B, C, D. I'm a Class C with Class D ambitions.",
+      "spoken": "Class A, B, C, D. I'm a Class C with Class D ambitions."
+    },
+    "21eccdc83852d97c": {
+      "text": "Inheriting controls like it's old money.",
+      "spoken": "Inheriting controls like it's old money."
+    },
+    "518712648a2dfddb": {
+      "text": "Encrypted at rest. Encrypted in transit. Looking good in both.",
+      "spoken": "Encrypted at rest. Encrypted in transit. Looking good in both."
+    },
+    "c21481d0f066c1f3": {
+      "text": "Every finding is just a POA&M that believes in itself.",
+      "spoken": "Every finding is just a poe-am that believes in itself."
+    },
+    "45e9ae48874c0073": {
+      "text": "Least privilege. Maximum swagger.",
+      "spoken": "Least privilege. Maximum swagger."
+    },
+    "c60d135e5ea7a2d6": {
+      "text": "Scanning... scanning... still fabulous.",
+      "spoken": "Scanning... scanning... still fabulous."
+    },
+    "3a0e4ca9c35b5ede": {
+      "text": "KSIs: vibes, but with evidence attached.",
+      "spoken": "K S I's: vibes, but with evidence attached."
+    },
+    "6e7b2034c4f2e88b": {
+      "text": "Cloud native. Born this way.",
+      "spoken": "Cloud native. Born this way."
+    },
+    "b59f4083e33ff020": {
+      "text": "Significant change notification? I've been changing significantly all day.",
+      "spoken": "Significant change notification? I've been changing significantly all day."
+    },
+    "adf8c37f6088648d": {
+      "text": "Ask me about my FIPS 140 validation.",
+      "spoken": "Ask me about my fips one forty validation."
+    },
+    "e5b7bd9b96ef8491": {
+      "text": "Rev5 isn't dead. It moved to a nice farm upstate. Visiting hours end June 11, 2027.",
+      "spoken": "Rev 5 isn't dead. It moved to a nice farm upstate. Visiting hours end June 11, 2027."
+    },
+    "0c6f42a47c6d6879": {
+      "text": "Rev5 is my ex. We're still on speaking terms until at least 2028.",
+      "spoken": "Rev 5 is my ex. We're still on speaking terms until at least 2028."
+    },
+    "f64f0676d1d79a00": {
+      "text": "Rev5 to 20x is a glow-up, not a breakup.",
+      "spoken": "Rev 5 to twenty X is a glow-up, not a breakup."
+    },
+    "ad01a6be77f97835": {
+      "text": "FedRAMP Ready went Legacy. Thoughts and prayers.",
+      "spoken": "FedRAMP Ready went Legacy. Thoughts and prayers."
+    },
+    "7a5d3a1df41505ce": {
+      "text": "Low, Moderate, High? Sir, this is a Class B establishment.",
+      "spoken": "Low, Moderate, High? Sir, this is a Class B establishment."
+    },
+    "5116121928f95fe0": {
+      "text": "It's not an authorization anymore. It's a Certification. Please update your LinkedIn.",
+      "spoken": "It's not an authorization anymore. It's a Certification. Please update your LinkedIn."
+    },
+    "937d70e033e23921": {
+      "text": "No agency sponsor? 20x said what it said.",
+      "spoken": "No agency sponsor? twenty X said what it said."
+    },
+    "7fde815e345383b3": {
+      "text": "A 600-page Word SSP walks into a bar. The bartender asks for the JSON.",
+      "spoken": "A 600-page Word S S P walks into a bar. The bartender asks for the JSON."
+    },
+    "105bf3886cfcdc63": {
+      "text": "Your Excel POA&M wants to be JSON when it grows up.",
+      "spoken": "Your Excel poe-am wants to be JSON when it grows up."
+    },
+    "a14e443189e5783c": {
+      "text": "OSCAL: optional, like flossing.",
+      "spoken": "oss-cal: optional, like flossing."
+    },
+    "ede9857ce5e93d4a": {
+      "text": "Have you read all of CR26? All of it? Be honest.",
+      "spoken": "Have you read all of C R 26? All of it? Be honest."
+    },
+    "aee3628cc945c18c": {
+      "text": "Consolidated Rules for 2026: one rulebook to rule them all.",
+      "spoken": "Consolidated Rules for 2026: one rulebook to rule them all."
+    },
+    "ae0c9af5864fe356": {
+      "text": "Rev5 adopts CR26 by January 1, 2027. The countdown has entered the chat.",
+      "spoken": "Rev 5 adopts C R 26 by January 1, 2027. The countdown has entered the chat."
+    },
+    "b0179af363b56eb6": {
+      "text": "Your 800-53 controls map to KSIs. It's the circle of life.",
+      "spoken": "Your eight hundred fifty-three controls map to K S I's. It's the circle of life."
+    },
+    "5a70435652e3ef90": {
+      "text": "20x Class D is still in the oven. Do not open the oven.",
+      "spoken": "twenty X Class D is still in the oven. Do not open the oven."
+    },
+    "26bd443bec9da70e": {
+      "text": "Point-in-time assessment? In this decade?",
+      "spoken": "Point-in-time assessment? In this decade?"
+    },
+    "ce879d15c590577f": {
+      "text": "I don't do annual. I do always.",
+      "spoken": "I don't do annual. I do always."
+    },
+    "e7d24d69b5dc1d25": {
+      "text": "Patch in days, not quarters. I'm begging you.",
+      "spoken": "Patch in days, not quarters. I'm begging you."
+    },
+    "c1a072bc32da5db9": {
+      "text": "Persistent validation: like a gym membership you actually use.",
+      "spoken": "Persistent validation: like a gym membership you actually use."
+    },
+    "f21ca5bd196aa39d": {
+      "text": "The JAB isn't coming back. Stop leaving the porch light on.",
+      "spoken": "The jab isn't coming back. Stop leaving the porch light on."
+    },
+    "99573b7af997f154": {
+      "text": "It looks like you're building a POA&M in Excel. CR26 would like a word. In JSON.",
+      "spoken": "It looks like you're building a poe-am in Excel. C R 26 would like a word. In JSON."
+    },
+    "cfda07f2f093dd3e": {
+      "text": "Another spreadsheet? Rev5 called. It wants its templates back.",
+      "spoken": "Another spreadsheet? Rev 5 called. It wants its templates back."
+    },
+    "5c138d9e2c0d75a3": {
+      "text": "It looks like you're writing a 600-page SSP. Would you like to make it machine-readable instead?",
+      "spoken": "It looks like you're writing a 600-page S S P. Would you like to make it machine-readable instead?"
+    },
+    "0fee3ed23385e615": {
+      "text": "It looks like you're writing a policy. Want me to add 'shall' forty more times?",
+      "spoken": "It looks like you're writing a policy. Want me to add 'shall' forty more times?"
+    },
+    "4388c3771f32b533": {
+      "text": "It looks like you're making slides about 20x. Have you considered more clouds?",
+      "spoken": "It looks like you're making slides about twenty X. Have you considered more clouds?"
+    },
+    "13a96c9b11b28e9d": {
+      "text": "It looks like you're writing an email. Reply-all responsibly.",
+      "spoken": "It looks like you're writing an email. Reply-all responsibly."
+    },
+    "5c72a12b211aaeba": {
+      "text": "Before you hit send: is that CUI?",
+      "spoken": "Before you hit send: is that C U I?"
+    },
+    "f59c91a0c07cc40f": {
+      "text": "Ooh, a terminal. Persistent validation, I presume?",
+      "spoken": "Ooh, a terminal. Persistent validation, I presume?"
+    },
+    "a12783a12d275299": {
+      "text": "Shipping code? Don't forget the SBOM.",
+      "spoken": "Shipping code? Don't forget the S-bomb."
+    },
+    "b62dcce240f416f8": {
+      "text": "Voice on. You're welcome.",
+      "spoken": "Voice on. You're welcome."
+    },
+    "de57a0d4e3250391": {
+      "text": "FedRAMP is dead. Long live FedRAMP 20X.",
+      "spoken": "FedRAMP is dead. Long live FedRAMP twenty X."
+    },
+    "95af239dd2433584": {
+      "text": "My heart belongs to agencies.",
+      "spoken": "My heart belongs to agencies."
+    },
+    "d8baba5e9079a191": {
+      "text": "The future of 20X is all happiness and rainbows.",
+      "spoken": "The future of twenty X is all happiness and rainbows."
+    },
+    "bf281e481d39bef9": {
+      "text": "20X is like Christmas for engineers.",
+      "spoken": "twenty X is like Christmas for engineers."
+    },
+    "b05c6ac563e46b32": {
+      "text": "Bugger the rest of you, these are critical security workflows.",
+      "spoken": "Bugger the rest of you, these are critical security workflows."
+    },
+    "899dcbf941f97e35": {
+      "text": "Do it now, make it better, sooner.",
+      "spoken": "Do it now, make it better, sooner."
+    },
+    "ddfea0fc856034b5": {
+      "text": "KSIs are about outcomes, we like that. They are better than controls.",
+      "spoken": "K S I's are about outcomes, we like that. They are better than controls."
+    },
+    "813d6867564ec222": {
+      "text": "If you're thinking about FedRAMP as compliance, you're done.",
+      "spoken": "If you're thinking about FedRAMP as compliance, you're done."
+    },
+    "9b349eeb941b78d1": {
+      "text": "Partly cloudy. Fully compliant.",
+      "spoken": "Partly cloudy. Fully compliant."
+    },
+    "1cb47b49e203f700": {
+      "text": "Today's forecast: a hundred percent chance of continuous monitoring.",
+      "spoken": "Today's forecast: a hundred percent chance of continuous monitoring."
+    },
+    "bae74fc6b90144bf": {
+      "text": "Some clouds have silver linings. Mine are FIPS validated.",
+      "spoken": "Some clouds have silver linings. Mine are fips validated."
+    },
+    "ef2077d7df5670e6": {
+      "text": "I'm a cloud. Of course I have high availability.",
+      "spoken": "I'm a cloud. Of course I have high availability."
+    },
+    "7d262ccf7d397c73": {
+      "text": "Let's take this offline. Oh wait, I'm a cloud.",
+      "spoken": "Let's take this offline. Oh wait, I'm a cloud."
+    },
+    "7162cfead5bc6af9": {
+      "text": "Screenshots as evidence? In this economy?",
+      "spoken": "Screenshots as evidence? In this economy?"
+    },
+    "e15c904d2a0ae01c": {
+      "text": "Every time someone emails a PDF, a KSI loses its wings.",
+      "spoken": "Every time someone emails a PDF, a K S I loses its wings."
+    },
+    "ae5ea827674f3879": {
+      "text": "Trust, but verify. Continuously. Via API.",
+      "spoken": "Trust, but verify. Continuously. Via API."
+    },
+    "3021abed4bc2ab17": {
+      "text": "Evidence should be fresh, not artisanal and hand-collected.",
+      "spoken": "Evidence should be fresh, not artisanal and hand-collected."
+    },
+    "9c3217684455e621": {
+      "text": "I don't need a status meeting. I have an API.",
+      "spoken": "I don't need a status meeting. I have an API."
+    },
+    "76d5ebe230705209": {
+      "text": "My first ATO package is now old enough to vote.",
+      "spoken": "My first A T O package is now old enough to vote."
+    },
+    "0998d8d8bf74c5f6": {
+      "text": "I've got 99 problems, and every one has a POA&M with a due date.",
+      "spoken": "I've got 99 problems, and every one has a poe-am with a due date."
+    },
+    "8fb19c8b37b61ebf": {
+      "text": "Spreadsheets are where controls go to retire.",
+      "spoken": "Spreadsheets are where controls go to retire."
+    },
+    "ded52d1ba6e2b8ec": {
+      "text": "Your asset inventory is out of date. I can tell. Clouds know.",
+      "spoken": "Your asset inventory is out of date. I can tell. Clouds know."
+    },
+    "7c5ec1dbe59a16c3": {
+      "text": "Zero trust. Infinite charm.",
+      "spoken": "Zero trust. Infinite charm."
+    },
+    "c1d31b3280be1899": {
+      "text": "My threat model includes Reply All.",
+      "spoken": "My threat model includes Reply All."
+    }
+  },
+  "voice_name": "Eric",
+  "voice_id": "cjVigY5qzO86Huf0OWal",
+  "model_id": "eleven_v4"
+}

@@ -4,8 +4,8 @@ SwiftUI app plus a Home Screen and Lock Screen widget. iOS 17 or later.
 
 - App: tap the cloud for a new line. It wiggles, speaks (optional), and you can share the line.
 - Widget: Small, Medium, Large, and Lock Screen sizes. Shows a new line every hour.
-- Lines and pronunciations live in `Shared/Lines.swift`.
-- The art in this version has no FedRAMP mark or brand wordmark, for App Store review.
+- Lines and pronunciations live in `Shared/Lines.swift`. Recorded voice clips come from `../voice/clips` (see the main README).
+- The FedRAMP logo is used with permission. Keep that permission on file: App Review may ask for it.
 
 ## Setup
 

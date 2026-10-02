@@ -18,6 +18,8 @@ targets:
     sources:
       - App
       - Shared
+      - path: ../voice/clips   # ElevenLabs clips, bundled as a "clips" folder
+        type: folder
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.cooeytools.juicycloud
