@@ -45,6 +45,40 @@ cd ios
 bash setup.sh YOUR_TEAM_ID    # generates and opens the Xcode project
 ```
 
+## GSA machines
+
+To just use JuicyCloud, you don't need Homebrew or anything else: download the installer above. These steps are only for building from source on a GSA-issued Mac.
+
+GSA-managed Macs may not give you admin rights, and the GSA network may block some downloads. Installing the Command Line Tools, Xcode, or Homebrew can need either one. If a step fails for those reasons, ask GSA IT to install or approve the tool. Don't try to get around agency controls (no VPNs, proxies, or alternate download mirrors). Check GSA's software policy before installing anything; see also the device note in the [Mac install guide](docs/MAC-INSTALL.md).
+
+1. Command Line Tools (Mac app and iPhone app). Prints a path if they're installed; otherwise starts the installer:
+
+   ```
+   xcode-select -p || xcode-select --install
+   ```
+
+2. Homebrew (iPhone app only). Check whether it's installed:
+
+   ```
+   brew --version
+   ```
+
+   If that says `command not found`, the official install command from [brew.sh](https://brew.sh) is below. It asks for an admin password; without one, ask GSA IT to install Homebrew for you (Homebrew also publishes a `.pkg` installer for managed Macs).
+
+   ```
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+   When it finishes, run the "Next steps" commands it prints so `brew` is on your PATH.
+
+3. Packages (iPhone app only):
+
+   ```
+   brew install xcodegen         # generates the Xcode project from ios/project.yml
+   ```
+
+The Mac app needs no Homebrew packages. `mac/build.sh` uses only tools that come with macOS and the Command Line Tools (`swiftc`, `python3`, `sips`, `iconutil`, `codesign`). The iPhone app also needs full Xcode from the Mac App Store.
+
 ## Customize
 
 - Lines: `mac/main.swift` (`defaultLines`) and `ios/Shared/Lines.swift` (`Lines.all`). Keep the two lists identical. Lines are fixed in the app, not user-editable, so every line has a recording.
